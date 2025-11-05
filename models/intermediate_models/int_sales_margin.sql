@@ -2,6 +2,7 @@ with sales_product as(
 select 
     date_date,
     orders_id,
+    products_id,
     quantity * purchase_price as purchase_cost,
     revenue,
     quantity
@@ -14,6 +15,9 @@ using (products_id)
 select 
     date_date,
     orders_id,
+    products_id,
+    quantity,
+    revenue,
     purchase_cost,
     round((revenue - purchase_cost),2) as margin
 from sales_product
