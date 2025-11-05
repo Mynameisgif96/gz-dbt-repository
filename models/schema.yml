@@ -42,4 +42,44 @@ sources:
             tests: 
               - not_null
               - unique
-        
+models: 
+  - name: int_orders_margin
+    description: "overview of margin per sale"
+    columns: 
+      - name: orders_id
+        description: "unique orders id"
+        tests: 
+          - unique
+          - not_null
+  - name: int_sales_margin
+    description: "sales figures"
+    tests:
+      - unique: 
+              column_name: "orders_id || products_id"
+    columns: 
+      - name: orders_id
+        description: "unique orders"
+        tests: 
+          - not_null
+      - name: products_id
+        description: "unique products id"
+        tests: 
+          - not_null 
+  - name: int_orders_operational
+    description: "operational margin per order"
+    columns: 
+      - name: orders_id
+        description: "unique orders id"
+        tests: 
+          - not_null
+          - unique
+  - name: finance_days
+    description: "overview of metrics per day"
+    columns: 
+      - name: date_date
+        description: "every day is new entry"
+        tests: 
+          - not_null
+          - unique
+
+
