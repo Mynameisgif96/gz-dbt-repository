@@ -42,6 +42,19 @@ sources:
             tests: 
               - not_null
               - unique
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: "Greenweeze adwords ad data"
+      - name: bing
+        identifier: raw_gz_bing
+        description: "Greenweeze bing ads data"
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: "Greenweeze criteo ads data"
+      - name: facebook 
+        identifier: raw_gz_facebook
+        description: "Greenweeze facebook ads data"
+       
 models: 
   - name: int_orders_margin
     description: "overview of margin per sale"
@@ -78,6 +91,44 @@ models:
     columns: 
       - name: date_date
         description: "every day is new entry"
+        tests: 
+          - not_null
+          - unique
+  - name: int_campaigns
+    description: "ad data for all ad campaigns"
+    tests: 
+      - unique: 
+          column_name: "date_date || paid_source || campaign_key || campaign_name"
+    columns: 
+      - name: date_date
+        description: "date if ad run"
+        tests:
+          - not_null
+      - name: paid_source
+        description: "source of ad"
+        tests: 
+          - not_null
+      - name: campaign_key
+        description: "unique key for the campaign"
+        tests: 
+          - not_null
+      - name: campaign_name
+        description: "name of campaign"
+        tests: 
+          - not_null
+  - name: int_campaign_day
+    description: "campaign per day"
+    columns: 
+      - name: date_date
+        description: "dates"
+        tests: 
+          - not_null
+          - unique 
+  - name: finance_campaign_day
+    description: "total per day income and outgoing"
+    columns: 
+      - name: date_date
+        description: "daily tracking"
         tests: 
           - not_null
           - unique
