@@ -94,5 +94,27 @@ models:
         tests: 
           - not_null
           - unique
+  - name: int_campaigns
+    description: "ad data for all ad campaigns"
+    tests: 
+      - unique: 
+          column_name: "date_date || paid_source || campaign_key || campaign_name"
+    columns: 
+      - name: date_date
+        description: "date if ad run"
+        tests:
+          - not_null
+      - name: paid_source
+        description: "source of ad"
+        tests: 
+          - not_null
+      - name: campaign_key
+        description: "unique key for the campaign"
+        tests: 
+          - not_null
+      - name: campaign_name
+        description: "name of campaign"
+        tests: 
+          - not_null
 
 
