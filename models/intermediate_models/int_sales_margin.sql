@@ -19,5 +19,6 @@ select
     quantity,
     revenue,
     purchase_cost,
-    round((revenue - purchase_cost),2) as margin
+    round((revenue - purchase_cost),2) as margin,
+    round({{ margin_percent( 'revenue', 'purchase_cost')}} *100, 2) as margin_percent
 from sales_product
