@@ -1,3 +1,4 @@
+{{ config(materialized = 'view')}}
 select 
     date_date
     ,round((operational_margin - ads_cost),2) as ads_margin
