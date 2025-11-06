@@ -9,4 +9,3 @@ from {{ ref('stg_raw__criteo') }}
 union all 
 select *
 from {{ ref('stg_raw__facebook') }}
-union all 
