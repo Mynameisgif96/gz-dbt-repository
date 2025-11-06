@@ -36,7 +36,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  Greenweeze project:
-    # Applies to all files under models/example/
+  gz-dbt-repository:
     mart:
       +materialized: table
