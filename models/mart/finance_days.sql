@@ -1,16 +1,3 @@
-with orders_op as (
-select 
-    date_date,
-    orders_id,
-    revenue,
-    operational_margin,
-    purchase_cost,
-    shipping_fee,
-    logcost,
-    quantity,
-
-from {{ ref('int_orders_operational') }}
-)
 
 select 
     date_date,
@@ -22,7 +9,7 @@ select
     round(sum(shipping_fee),2) as shipping_fees,
     round(sum(logcost),2) as total_log_costs,
     sum(quantity) as total_products_sold
-from orders_op 
+from {{ ref('int_orders_operational') }}
 
 group by date_date 
 
